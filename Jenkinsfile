@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo "Hello $Name"
-                    sh "docker compose -f mongo-compose.yaml up"   
+                    sh "docker compose -f mongo-compose.yaml up -d"   
                 }
             }
         }
