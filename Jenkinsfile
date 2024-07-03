@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo "Hello $Name"
-                docker compose -f mongo-compose.yaml up
+                script {
+                    echo "Hello $Name"
+                    sh "docker compose -f mongo-compose.yaml up"   
+                }
             }
         }
     }
