@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 script {
-                    echo "Hello $Name"
+                    echo "Hello"
                     sh "docker compose up -d"   
                 }
             }
