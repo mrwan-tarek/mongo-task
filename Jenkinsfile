@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     sh "COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l`"
-                    echo "env.COMPOSE_STATUS=${COMPOSE_STATUS}"  >> envvars.groovy
+                    sh """ echo "env.COMPOSE_STATUS=${COMPOSE_STATUS}"  >> envvars.groovy """
                 }
             }
         }
