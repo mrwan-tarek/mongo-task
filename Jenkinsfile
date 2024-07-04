@@ -17,7 +17,7 @@ pipeline {
                     docker compose up -d
                 } elif ($COMPOSE_STATUS == 2) {
                     echo 'the containers are already running'
-                """}
+                }"""
             }
         }
     }
