@@ -5,7 +5,7 @@ pipeline {
         stage('cheking containers') {
             steps {
                 script {
-                    sh "export COMPOSE_STATUS = 'docker ps |grep compose-pipeline-* | wc -l' "
+                    sh "export COMPOSE_STATUS = `docker ps |grep compose-pipeline-* | wc -l` "
                     sh "echo $COMPOSE_STATUS" 
                 }
             }
