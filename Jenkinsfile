@@ -13,12 +13,13 @@ pipeline {
             steps {
                 script {
                     sh"""
-                    if ($COMPOSE_STATUS == 0) {
+                    if [ ${COMPOSE_STATUS} == 0 ] ; then
                     echo 'running the containers now!!!!'
                     docker compose up -d
-                    } elif ($COMPOSE_STATUS == 2) {
+                    elif [ ${COMPOSE_STATUS} == 2 ] ; then
                     echo 'the containers are already running'
-                        }"""
+                    fi
+                        """
                     }
                 }
         }
