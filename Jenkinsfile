@@ -5,9 +5,9 @@ pipeline {
         stage('cheking containers') {
             steps {
                 script {
-                    sh "export COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l` "
-                    sh "echo ${COMPOSE_STATUS}" 
+                    sh "export COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l` " 
                 }
+                echo "${COMPOSE_STATUS}"
             }
         }
         stage('compose up if shutdown') {
