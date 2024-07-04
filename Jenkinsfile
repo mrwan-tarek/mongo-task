@@ -10,7 +10,7 @@ pipeline {
             }
         }
         stage('compose up if shutdown') {
-            when { COMPOSE_STATUS  0  }
+            when { environment(name: "COMPOSE_STATUS", value: "0")  }
             steps {
                 script {
                     sh "docker compose up -d "   
@@ -19,7 +19,7 @@ pipeline {
         }
     
         stage('do nothing if up') {
-            when { COMPOSE_STATUS  2  }
+            when { environment(name: "COMPOSE_STATUS", value: "2")  }
             steps {
                 script {
                     sh "echo 'already running' "   
