@@ -5,14 +5,16 @@ pipeline {
         stage('cheking containers') {
             steps {
                 script {
-                    sh "export COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l`"   
+                    sh "COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l`"
+                    echo "env.COMPOSE_STATUS=${COMPOSE_STATUS}"  >> envvars.groovy
                 }
             }
         }
         stage('compose up if shutdown') {
             steps {
-                sh "printenv"
                 script {
+                    load "envvars.groovy" 
+                    sh "printenv"
                       sh """
                         if [ $COMPOSE_STATUS -eq 2 ]
                         then
