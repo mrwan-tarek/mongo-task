@@ -12,13 +12,15 @@ pipeline {
         stage('compose up if shutdown') {
             steps {
                 script {
-                    sh"""
-                    if [ ${COMPOSE_STATUS} == 0 ] ; then
-                    echo 'running the containers now!!!!'
-                    docker compose up -d
-                    elif [ ${COMPOSE_STATUS} == 2 ] ; then
-                    echo 'the containers are already running'
-                    fi
+                      sh """
+                        if [ ${COMPOSE_STATUS} -eq 2 ]
+                        then
+                          echo "starting the containers"
+                          docker compose up -d
+                        elif [ ${COMPOSE_STATUS} -eq 0 ]
+                         then
+                          echo "the contaires are already running"
+                         fi
                         """
                     }
                 }
