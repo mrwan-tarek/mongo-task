@@ -7,7 +7,7 @@ pipeline {
         stage('cheking containers') {
             steps {
                 script {
-                 sh "echo \$("${COMPOSE_STATUS}")" 
+                 echo \$("${COMPOSE_STATUS}") 
                 }
             }
         }
