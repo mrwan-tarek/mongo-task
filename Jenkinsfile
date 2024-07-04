@@ -11,7 +11,7 @@ pipeline {
         }
         stage('compose up if shutdown') {
             steps {
-                bat "set"
+                sh "printenv"
                 script {
                       sh """
                         if [ $COMPOSE_STATUS -eq 2 ]
