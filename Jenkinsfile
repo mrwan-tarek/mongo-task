@@ -1,12 +1,13 @@
 pipeline {
     agent any
-
+    environment {
+        COMPOSE_STATUS = '`docker ps |grep compose-pipeline-* | wc -l`'
+    }
     stages {
         stage('cheking containers') {
             steps {
                 script {
-                    sh "COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l`"
-                    sh """ echo "env.COMPOSE_STATUS=${COMPOSE_STATUS}"  >> envvars.groovy """
+                 echo "${COMPOSE_STATUS}" 
                 }
             }
         }
