@@ -1,13 +1,12 @@
 pipeline {
     agent any
-    environment {
-        COMPOSE_STATUS = 'docker ps |grep compose-pipeline-* | wc -l'
-    }
+
     stages {
         stage('cheking containers') {
             steps {
                 script {
-                sh "echo `"${COMPOSE_STATUS}"`" 
+                    sh "export COMPOSE_STATUS = 'docker ps |grep compose-pipeline-* | wc -l' "
+                    sh "echo $COMPOSE_STATUS" 
                 }
             }
         }
