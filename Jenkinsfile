@@ -8,14 +8,13 @@ pipeline {
                     sh "export COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l` " 
                 }
                 echo "${COMPOSE_STATUS}"
+                sh "printenv"
             }
         }
         stage('compose up if shutdown') {
             steps {
                 sh "printenv"
-                script {
-                    load "envvars.groovy" 
-                   
+                script {                   
                       sh """
                         if [ $COMPOSE_STATUS -eq 2 ]
                         then
