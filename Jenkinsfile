@@ -8,6 +8,8 @@ pipeline {
                     // Check if Docker Compose is already running
                     def isRunning = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStatus: true)
 
+                    echo "$isRunning"
+
                     if (isRunning == 2) {
                         echo "Docker Compose is already running"
                     } else {
