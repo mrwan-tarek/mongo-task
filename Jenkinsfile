@@ -2,31 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('cheking containers') {
+        stage('Check and Run Docker Compose') {
             steps {
                 script {
-                    sh "export COMPOSE_STATUS=`docker ps |grep compose-pipeline-* | wc -l` " 
-                }
-                echo "${COMPOSE_STATUS}"
-                sh "printenv"
-            }
-        }
-        stage('compose up if shutdown') {
-            steps {
-                sh "printenv"
-                script {                   
-                      sh """
-                        if [ $COMPOSE_STATUS -eq 2 ]
-                        then
-                          echo "starting the containers"
-                          docker compose up -d
-                        elif [ $COMPOSE_STATUS -eq 0 ]
-                         then
-                          echo "the contaires are already running"
-                         fi
-                        """
+                    // Check if Docker Compose is already running
+                    def isRunning = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStatus: true)
+
+                    if (isRunning == 2) {
+                        echo "Docker Compose is already running"
+                    } else {
+                        // Docker Compose is not running, start it
+                        echo "Docker Compose is not running, starting it now..."
+                        sh 'docker-compose up -d'
                     }
                 }
+            }
         }
     }
 }
