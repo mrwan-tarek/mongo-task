@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+    
     stages {
         stage('Check Docker Compose status') {
             when {
