@@ -2,24 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Check and Run Docker Compose') {
+        stage('Check Docker Compose status') {
+            when {
+                expression {
+                    def containersCount  = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStdout: true)
+                    containersCount.toInteger() == 2
+                }
+            }
             steps {
                 script {
-                    // Check if Docker Compose is already running
+                    echo "Docker Compose is already running"
+                    }
+                }
+            }
+        stage('start Docker Compose') {
+            when {
+                expression {
                     def containersCount  = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStdout: true)
-                    def isRunning = containersCount.toInteger()
-
-                    echo "$isRunning"
-
-                    if (isRunning == 2) {
-                        echo "Docker Compose is already running"
-                    } else {
-                        // Docker Compose is not running, start it
-                        echo "Docker Compose is not running, starting it now..."
-                        sh 'docker compose up -d'
+                    containersCount.toInteger() == 0
+                }
+            }
+            steps {
+                script {
+                    echo "Docker Compose is not running, starting it now..."
+                    sh "docker compose up -d"
                     }
                 }
             }
         }
     }
-}
