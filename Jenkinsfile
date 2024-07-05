@@ -6,8 +6,8 @@ pipeline {
             steps {
                 script {
                     // Check if Docker Compose is already running
-                    def isrunning = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStdout: true)
-                    def isRunning = isrunninng.toInteger()
+                    def containersCount  = sh(script: 'docker ps |grep compose-pipeline-* | wc -l', returnStdout: true)
+                    def isRunning = containersCount.toInteger()
 
                     echo "$isRunning"
 
