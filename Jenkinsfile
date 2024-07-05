@@ -13,7 +13,7 @@ pipeline {
                     } else {
                         // Docker Compose is not running, start it
                         echo "Docker Compose is not running, starting it now..."
-                        sh 'docker-compose up -d'
+                        sh 'docker compose up -d'
                     }
                 }
             }
