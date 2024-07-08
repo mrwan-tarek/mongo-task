@@ -3,14 +3,6 @@
 ![Jenkins Poll SCM vs Webhook](https://dz2cdn1.dzone.com/storage/temp/5679141-screen-shot-2017-06-21-at-43750-pm.png)
 
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Poll SCM](#poll-scm)
-3. [Webhooks](#webhooks)
-4. [Comparison](#comparison)
-5. [Visual Representation](#visual-representation)
-6. [Conclusion](#conclusion)
-
 ---
 
 ## Introduction
