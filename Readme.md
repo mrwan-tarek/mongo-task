@@ -1,6 +1,6 @@
 # Jenkins Poll SCM vs Webhook
 
-![Jenkins Poll SCM vs Webhook](images/jenkins-poll-scm-vs-webhook.png)
+![Jenkins Poll SCM vs Webhook](https://dz2cdn1.dzone.com/storage/temp/5679141-screen-shot-2017-06-21-at-43750-pm.png)
 
 This repository provides an overview of the differences between Poll SCM and Webhooks in Jenkins.
 
@@ -48,19 +48,10 @@ Webhooks allow the VCS to notify Jenkins immediately when a change occurs, trigg
 
 ### Poll SCM Configuration
 
-![Poll SCM Configuration](images/poll-scm-config.png)
+![Poll SCM Configuration](https://i.sstatic.net/8HvxY.png)
 
 ### Webhook Configuration
 
-![Webhook Configuration](images/webhook-config.png)
+![Webhook Configuration](https://argo-cd.readthedocs.io/en/stable/assets/webhook-config.png)
 
 ---
-
-## Conclusion
-
-Understanding the differences between Poll SCM and Webhooks helps in choosing the appropriate method based on project requirements and infrastructure capabilities.
-
----
-
-This repository serves as a guide to help you leverage Poll SCM and Webhooks effectively in your Jenkins automation workflows. Contributions and feedback are welcome!
-
