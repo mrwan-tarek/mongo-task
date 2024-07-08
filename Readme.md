@@ -1,45 +1,66 @@
-# Jenkins SCM Polling vs Webhooks
+# Jenkins Poll SCM vs Webhook
 
-## Poll SCM
+![Jenkins Poll SCM vs Webhook](images/jenkins-poll-scm-vs-webhook.png)
 
-**Overview:**
-Poll SCM (Source Code Management) in Jenkins involves Jenkins periodically checking the SCM repository for changes.
+This repository provides an overview of the differences between Poll SCM and Webhooks in Jenkins.
 
-**How it works:**
-- Jenkins is configured to poll the SCM at specified intervals (e.g., every few minutes).
-- Builds are triggered if changes are detected during the polling.
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Poll SCM](#poll-scm)
+3. [Webhooks](#webhooks)
+4. [Comparison](#comparison)
+5. [Visual Representation](#visual-representation)
+6. [Conclusion](#conclusion)
 
-**Pros:**
-- Simple to set up within Jenkins.
-- Suitable for environments where direct webhook integration is not possible or allowed.
+---
 
-**Cons:**
-- Potential delays in detecting changes due to polling intervals.
-- Increased load on both Jenkins and the SCM system due to frequent polling.
+## Introduction
 
-**More Info:** [What is Poll SCM in Jenkins and how to configure Poll SCM?](https://www.geeksforgeeks.org/what-is-poll-scm-jenkins-and-how-to-configure-poll-scm/)
+Jenkins offers multiple methods for triggering builds, each with its own advantages and use cases. Two primary methods are Poll SCM and Webhooks.
 
-## Webhooks
+### Poll SCM
 
-**Overview:**
-Webhooks in Jenkins allow for immediate triggering of builds upon SCM events.
+Poll SCM involves Jenkins periodically checking the version control system (VCS) for changes based on a configured schedule. It's suitable when direct webhook integration is not feasible or desired.
 
-**How it works:**
-- When a change occurs in the SCM repository (e.g., commit, merge), the SCM system sends a webhook to Jenkins.
-- Jenkins processes the webhook and triggers a build immediately.
+### Webhooks
 
-**Pros:**
-- Real-time triggering of builds, reducing latency in build initiation.
-- More efficient resource usage as Jenkins only acts upon events, not polling.
+Webhooks allow the VCS to notify Jenkins immediately when a change occurs, triggering a build promptly. This reduces latency and enhances automation efficiency.
 
-**Cons:**
-- Requires setup both in the SCM system (to send webhooks) and in Jenkins (to receive and process webhooks).
-- Dependency on external systems (SCM providers) to correctly deliver webhooks.
+---
 
-**More Info:** For more details on webhooks, you can refer to external resources or documentation specific to your SCM provider.
+## Comparison
 
-## Recommendation
+### Key Differences
 
-- **Use Poll SCM** for setups where immediate triggering via webhooks is not feasible or allowed.
-- **Use Webhooks** for faster feedback and efficient CI/CD workflows, especially in environments where real-time updates are crucial.
+- **Poll SCM:**
+  - Jenkins polls the VCS at regular intervals.
+  - Requires configuring a cron expression.
+  - Suitable for environments without webhook support.
+
+- **Webhooks:**
+  - VCS notifies Jenkins of changes in real-time.
+  - Eliminates polling delay.
+  - Preferred for faster build triggering and efficiency.
+
+---
+
+## Visual Representation
+
+### Poll SCM Configuration
+
+![Poll SCM Configuration](images/poll-scm-config.png)
+
+### Webhook Configuration
+
+![Webhook Configuration](images/webhook-config.png)
+
+---
+
+## Conclusion
+
+Understanding the differences between Poll SCM and Webhooks helps in choosing the appropriate method based on project requirements and infrastructure capabilities.
+
+---
+
+This repository serves as a guide to help you leverage Poll SCM and Webhooks effectively in your Jenkins automation workflows. Contributions and feedback are welcome!
 
