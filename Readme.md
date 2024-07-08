@@ -2,7 +2,6 @@
 
 ![Jenkins Poll SCM vs Webhook](https://dz2cdn1.dzone.com/storage/temp/5679141-screen-shot-2017-06-21-at-43750-pm.png)
 
-This repository provides an overview of the differences between Poll SCM and Webhooks in Jenkins.
 
 ## Table of Contents
 1. [Introduction](#introduction)
